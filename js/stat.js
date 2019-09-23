@@ -40,6 +40,11 @@ window.renderStatistics = function (ctx, players, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = 'hsl(240, ' + Math.round(Math.random() * 100) + '%, 40%)';
+    }
     ctx.fillText(Math.round(times[i]), DEFAULT_X + (BAR_WIDTH + BAR_GAP) * i, TEXT_Y - (BAR_HEIGHT * times[i]) / maxTime - GAP * 3);
     ctx.fillText(players[i], DEFAULT_X + (BAR_WIDTH + BAR_GAP) * i, TEXT_Y);
     ctx.fillRect(DEFAULT_X + (BAR_WIDTH + BAR_GAP) * i, BAR_Y, BAR_WIDTH, -(BAR_HEIGHT * times[i]) / maxTime);
